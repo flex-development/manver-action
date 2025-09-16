@@ -8,6 +8,7 @@ ggshield
 gpgsign
 hmarr
 jchen
+kaisugi
 manver
 nvmrc
 sarif
