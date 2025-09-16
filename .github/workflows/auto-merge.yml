@@ -27,7 +27,7 @@ on:
       - synchronize
 jobs:
   auto-merge:
-    if: github.event.pull_request.auto_merge == null && !github.event.pull_request.draft
+    if: ${{ !github.event.pull_request.draft }}
     runs-on: ubuntu-latest
     steps:
       - id: debug
@@ -35,7 +35,7 @@ jobs:
         uses: hmarr/debug-action@v3.0.0
       - id: bot-token
         name: Get bot token
-        uses: actions/create-github-app-token@v2.1.1
+        uses: actions/create-github-app-token@v2.1.4
         with:
           app-id: ${{ secrets.BOT_APP_ID }}
           private-key: ${{ secrets.BOT_PRIVATE_KEY }}
