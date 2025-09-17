@@ -1,0 +1,30 @@
+# ACTION METADATA
+# https://docs.github.com/actions/creating-actions/metadata-syntax-for-github-actions
+
+---
+name: manver
+author: '@flex-development'
+description: Manifest version extraction utility
+inputs:
+  manifest:
+    default: package.json
+    description: path to manifest file
+    required: false
+  property:
+    default: .version
+    description: version property path
+    required: false
+outputs:
+  manifest:
+    description: version extracted from manifest
+    value: ${{ steps.manifest.outputs.result }}
+runs:
+  using: composite
+  steps:
+    - id: manifest
+      name: Get manifest version
+      shell: bash
+      run: echo "result=$(jq ${{ inputs.property }} ${{ inputs.manifest }} -r)" >>$GITHUB_OUTPUT
+branding:
+  color: blue
+  icon: tag

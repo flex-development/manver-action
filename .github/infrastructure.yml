@@ -30,6 +30,7 @@ branches:
           - context: gitguardian
           - context: lint
           - context: spelling
+          - context: test
         strict: true
       restrictions: null
 environments: []
