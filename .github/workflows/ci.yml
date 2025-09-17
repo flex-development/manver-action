@@ -52,7 +52,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       cache-key: ${{ steps.cache-key.outputs.result }}
-      version: ${{ steps.build-version.outputs.result }}
+      version: ${{ steps.version.outputs.build }}
     steps:
       - id: debug
         name: Print environment variables and event payload
@@ -84,13 +84,9 @@ jobs:
         with:
           key: ${{ steps.cache-key.outputs.result }}
           path: ${{ env.CACHE_PATH }}
-      - id: manifest-version
-        name: Get manifest version
-        run: echo "result=$(jq .version package.json -r)" >>$GITHUB_OUTPUT
-      - id: build-version
-        name: Get build version
-        run: |
-          echo "result=${{ startsWith(github.head_ref || github.ref_name, 'release/') && steps.manifest-version.outputs.result || format('{0}+{1}', steps.manifest-version.outputs.result, github.event.pull_request.head.sha || github.sha) }}" >>$GITHUB_OUTPUT
+      - id: version
+        name: Extract version metadata
+        uses: ./
   gitguardian:
     runs-on: ubuntu-latest
     steps:
