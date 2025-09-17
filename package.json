@@ -41,6 +41,7 @@
     "fix:format": "dprint fmt",
     "fix:lint": "yarn check:lint --cache --fix",
     "postinstall": "[ -f ./node_modules/.bin/husky ] && chmod +x .husky/* && husky || exit 0",
+    "release": "bash ./scripts/release.sh",
     "remark": "remark ."
   },
   "devDependencies": {
