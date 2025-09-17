@@ -35,6 +35,7 @@
     "check:spelling": "cspell lint --color --no-progress --relative $@ \"**\"",
     "check:upgrades": "yarn upgrade-interactive",
     "clean:modules": "trash ./.yarn/{cache,*.gz} ./node_modules",
+    "clean:pack": "trash \"./*.tgz\"",
     "commitlint": "commitlint -V",
     "fix:cg": "yarn fix:format && yarn fix:lint",
     "fix:dedupe": "yarn dedupe --strategy=highest",
