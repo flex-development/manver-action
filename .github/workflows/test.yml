@@ -46,3 +46,4 @@ jobs:
         name: Outputs
         run: |
           echo steps.version.outputs.manifest: ${{ steps.version.outputs.manifest }}
+          echo steps.version.outputs.build: ${{ steps.version.outputs.build }}

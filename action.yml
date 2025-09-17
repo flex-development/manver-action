@@ -6,6 +6,18 @@ name: manver
 author: '@flex-development'
 description: Manifest version extraction utility
 inputs:
+  branch:
+    default: ${{ github.head_ref || github.ref_name }}
+    description: |
+      the name of the branch to check.
+      branches starting with the specified `branch-prefix` are considered release branches
+    required: false
+  branch-prefix:
+    default: release/
+    description: |
+      release branch prefix.
+      build versions generated from release branches will not include a commit sha
+    required: false
   manifest:
     default: package.json
     description: path to manifest file
@@ -14,7 +26,14 @@ inputs:
     default: .version
     description: version property path
     required: false
+  sha:
+    default: ${{ github.event.pull_request.head.sha || github.sha }}
+    description: the commit sha to use as build metadata
+    required: false
 outputs:
+  build:
+    description: build version (generated from manifest version and commit sha)
+    value: ${{ steps.build.outputs.result }}
   manifest:
     description: version extracted from manifest
     value: ${{ steps.manifest.outputs.result }}
@@ -25,6 +44,11 @@ runs:
       name: Get manifest version
       shell: bash
       run: echo "result=$(jq ${{ inputs.property }} ${{ inputs.manifest }} -r)" >>$GITHUB_OUTPUT
+    - id: build
+      name: Get build version
+      shell: bash
+      run: |
+        echo "result=${{ startsWith(inputs.branch, inputs.branch-prefix) && steps.manifest.outputs.result || format('{0}+{1}', steps.manifest.outputs.result, inputs.sha) }}" >>$GITHUB_OUTPUT
 branding:
   color: blue
   icon: tag
