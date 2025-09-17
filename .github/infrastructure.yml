@@ -152,7 +152,7 @@ repository:
   has_issues: true
   has_projects: true
   has_wiki: false
-  homepage: https://github.com/flex-development/manver-action
+  homepage: https://github.com/marketplace/actions/manver-version
   is_template: false
   private: false
   squash_merge_commit_message: BLANK
