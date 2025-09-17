@@ -33,7 +33,8 @@ branches:
           - context: test
         strict: true
       restrictions: null
-environments: []
+environments:
+  - environment_name: release
 labels:
   - name: flag:breaking-change
     description: contains changes that require major version bump
