@@ -51,7 +51,7 @@ jobs:
     outputs:
       prerelease: ${{ steps.dist-tag.outputs.prerelease }}
       tag: ${{ steps.tag.outputs.result }}
-      version: ${{ steps.version.outputs.result }}
+      version: ${{ steps.version.outputs.manifest }}
       url: ${{ steps.url.outputs.result }}
     steps:
       - id: debug
@@ -64,14 +64,14 @@ jobs:
           ref: ${{ env.REF }}
       - id: version
         name: Get release version
-        run: echo "result=$(jq .version package.json -r)" >>$GITHUB_OUTPUT
+        uses: ./
       - id: tag-prefix
         name: Get release tag prefix
         run: echo "result=$(jq .tagprefix grease.config.json -r)" >>$GITHUB_OUTPUT
       - id: tag
         name: Get release tag
         run: |
-          echo "result=${{ format('{0}{1}', steps.tag-prefix.outputs.result, steps.version.outputs.result) }}" >>$GITHUB_OUTPUT
+          echo "result=${{ format('{0}{1}', steps.tag-prefix.outputs.result, steps.version.outputs.manifest) }}" >>$GITHUB_OUTPUT
       - id: url
         name: Get release url
         run: |
@@ -80,7 +80,7 @@ jobs:
         name: Get dist tag
         uses: flex-development/dist-tag-action@1.1.2
         with:
-          target: ${{ steps.version.outputs.result }}
+          target: ${{ steps.version.outputs.manifest }}
   publish:
     needs: preflight
     runs-on: ubuntu-latest
