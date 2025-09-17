@@ -7,26 +7,74 @@
 [![conventional commits](https://img.shields.io/badge/-conventional%20commits-fe5196?logo=conventional-commits\&logoColor=ffffff)](https://conventionalcommits.org)
 [![yarn](https://img.shields.io/badge/-yarn-2c8ebb?style=flat\&logo=yarn\&logoColor=ffffff)](https://yarnpkg.com)
 
-Extract version metadata from a manifest file
+Extract version metadata
 
 ## Contents
 
 - [What is this?](#what-is-this)
 - [Usage](#usage)
-- [Inputs & Outputs](#inputs--outputs)
+- [Inputs](#inputs)
+  - [`branch`](#branch)
+  - [`build`](#build)
+  - [`manifest`](#manifest)
+  - [`property`](#property)
+  - [`release-branch-prefix`](#release-branch-prefix)
+- [Outputs](#outputs)
+  - [`build`](#build-1)
+  - [`manifest`](#manifest-1)
 - [Contribute](#contribute)
 
 ## What is this?
 
-This is a simple action for extracting version metadata from manifest files.
+This is a simple action for extracting version metadata.
 
 ## Usage
 
 **TODO**: usage
 
-## Inputs & Outputs
+## Inputs
 
-**TODO**: inputs & outputs
+### `branch`
+
+> **default**: `${{ github.head_ref || github.ref_name }}`
+
+The name of the branch to check when generating a build version.
+
+### `build`
+
+> **default**: `${{ github.event.pull_request.head.sha || github.sha }}`
+
+Build metadata.
+
+### `manifest`
+
+> **default**: `package.json`
+
+The path to the manifest file.\
+Manifest files are expected to be compatible with [`jq`][jq].
+
+### `property`
+
+> **default**: `.version`
+
+Version property path in [`manifest`](#manifest) file.
+
+### `release-branch-prefix`
+
+> **default**: `release/`
+
+The prefix used to mark release branches.\
+Build versions generated from release branches will not have [metadata](#build) attached.
+
+## Outputs
+
+### `build`
+
+Build version (generated from [`outputs.manifest`](#manifest-1) and [`inputs.build`](#build)).
+
+### `manifest`
+
+The value of [`property`](#property) in the [`manifest`](#manifest) file.
 
 ## Contribute
 
@@ -34,3 +82,5 @@ See [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
 This project has a [code of conduct](./CODE_OF_CONDUCT.md). By interacting with this repository, organization, or
 community you agree to abide by its terms.
+
+[jq]: https://jqlang.org

@@ -145,7 +145,7 @@ repository:
   automated_security_fixes: true
   default_branch: main
   delete_branch_on_merge: true
-  description: Manifest version extraction utility for GitHub Actions
+  description: Version metadata extraction utility for GitHub Actions
   has_issues: true
   has_projects: true
   has_wiki: false
