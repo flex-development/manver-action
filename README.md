@@ -12,7 +12,7 @@ Extract version metadata
 ## Contents
 
 - [What is this?](#what-is-this)
-- [Usage](#usage)
+- [Use](#use)
 - [Inputs](#inputs)
   - [`branch`](#branch)
   - [`build`](#build)
@@ -28,9 +28,31 @@ Extract version metadata
 
 This is a simple action for extracting version metadata.
 
-## Usage
+## Use
 
-**TODO**: usage
+```yaml
+---
+name: ci
+on:
+  - pull_request
+  - push
+  - workflow_dispatch
+jobs:
+  preflight:
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.version.outputs.build }}
+    steps:
+      - id: checkout
+        name: Checkout ${{ github.head_ref || github.ref_name }}
+        uses: actions/checkout@v5.0.0
+        with:
+          persist-credentials: false
+          ref: ${{ github.head_ref || github.ref }}
+      - id: version
+        name: Extract version metadata
+        uses: flex-development/manver-action@1.0.0
+```
 
 ## Inputs
 
