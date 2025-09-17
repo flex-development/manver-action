@@ -210,7 +210,8 @@ See [`.commitlintrc.ts`](.commitlintrc.ts) to view all commit guidelines.
 
 ### Making Changes
 
-**TODO**: making changes
+To make changes to this action, edit [`action.yml`](./action.yml).\
+See [creating a composite action][composite-action] to learn more.
 
 ### Documentation
 
@@ -220,7 +221,9 @@ Before making a pull request, be sure your code is well documented, as it will b
 
 ### Testing
 
-**TODO**: testing
+To test changes, update [`.github/workflows/test.yml`](./.github/workflows/test.yml).
+
+Changes to outputs should be printed during the `outputs` step.
 
 ### Getting Help
 
@@ -337,6 +340,8 @@ e.g:
       - create and publish github release
 
 [commitlint]: https://github.com/conventional-changelog/commitlint
+
+[composite-action]: https://docs.github.com/actions/tutorials/create-actions/create-a-composite-action#creating-a-composite-action-within-the-same-repository
 
 [conventionalcommits]: https://conventionalcommits.org
 
