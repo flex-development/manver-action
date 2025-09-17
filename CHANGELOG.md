@@ -1,3 +1,16 @@
+## [1.0.1](https://github.com/flex-development/manver-action/compare/1.0.0...1.0.1) (2025-09-17)
+
+### :robot: Continuous Integration
+
+- [[`9d65c9a`](https://github.com/flex-development/manver-action/commit/9d65c9a5b0026b75e7a6459f0006eb58b88f9524)] **workflows:** [`test`] run workflow on all pull requests
+
+### :house_with_garden: Housekeeping
+
+- [[`d8eff00`](https://github.com/flex-development/manver-action/commit/d8eff0005a27eda382c5ff62fd927b14a2a29f92)] change action name
+- [[`5e53939`](https://github.com/flex-development/manver-action/commit/5e53939e02340e7552a2af7f5957d419f254ed31)] change action name to `manver-action`
+- [[`cad16e3`](https://github.com/flex-development/manver-action/commit/cad16e3c0134027f6b2b1a1361a3218c480a0e2a)] **github:** add `scope:release` label
+- [[`6fcb545`](https://github.com/flex-development/manver-action/commit/6fcb54574c1c9f40782ce3e6e1d3c894897a3546)] **github:** set repo url to marketplace url
+
 ## 1.0.0 (2025-09-17)
 
 ### :robot: Continuous Integration
@@ -27,5 +40,6 @@
 - [[`d3ae3c0`](https://github.com/flex-development/manver-action/commit/d3ae3c0bcfd04fc756bcc981d5297e816d8b9dbe)] **github:** add `release` environment
 - [[`dd63b34`](https://github.com/flex-development/manver-action/commit/dd63b34d55d348302289119f52d4bd5a9696f20a)] **pkg:** add `clean:pack` script
 - [[`8e36725`](https://github.com/flex-development/manver-action/commit/8e36725447a255bb8dd6d7f4971d84bd4a711dbe)] **pkg:** add `release` script
+
 
 
