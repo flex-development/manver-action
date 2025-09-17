@@ -2,7 +2,7 @@
 # https://docs.github.com/actions/creating-actions/metadata-syntax-for-github-actions
 
 ---
-name: manver
+name: manifest-version
 author: '@flex-development'
 description: Manifest version extraction utility
 inputs:
