@@ -18,7 +18,7 @@ Extract version metadata from a manifest file
 
 ## What is this?
 
-**TODO**: what is this?
+This is a simple action for extracting version metadata from manifest files.
 
 ## Usage
 
