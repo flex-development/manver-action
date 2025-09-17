@@ -15,9 +15,6 @@
 name: test
 on:
   pull_request:
-    paths:
-      - .github/workflows/test.yml
-      - action.yml
   push:
     paths:
       - .github/workflows/test.yml
