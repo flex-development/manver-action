@@ -22,6 +22,7 @@ Extract version metadata
 - [Outputs](#outputs)
   - [`build`](#build-1)
   - [`manifest`](#manifest-1)
+- [Related](#related)
 - [Contribute](#contribute)
 
 ## What is this?
@@ -98,6 +99,10 @@ Build version (generated from [`outputs.manifest`](#manifest-1) and [`inputs.bui
 
 The value of [`property`](#property) in the [`manifest`](#manifest) file.
 
+## Related
+
+- [`flex-development/jq-action`][jq-action] — execute json queries with [`jq`][jq]
+
 ## Contribute
 
 See [`CONTRIBUTING.md`](CONTRIBUTING.md).
@@ -106,3 +111,5 @@ This project has a [code of conduct](./CODE_OF_CONDUCT.md). By interacting with 
 community you agree to abide by its terms.
 
 [jq]: https://jqlang.org
+
+[jq-action]: https://github.com/flex-development/jq-action
