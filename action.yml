@@ -40,8 +40,10 @@ runs:
   steps:
     - id: manifest
       name: Get manifest version
-      shell: bash
-      run: echo "result=$(jq ${{ inputs.property }} ${{ inputs.manifest }} -r)" >>$GITHUB_OUTPUT
+      uses: flex-development/jq-action@1.0.0
+      with:
+        data: ${{ inputs.manifest }}
+        filter: ${{ inputs.property }}
     - id: build
       name: Get build version
       shell: bash
