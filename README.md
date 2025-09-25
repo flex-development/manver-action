@@ -19,9 +19,12 @@ Extract version metadata
   - [`manifest`](#manifest)
   - [`property`](#property)
   - [`release-branch-prefix`](#release-branch-prefix)
+  - [`tag-prefix`](#tag-prefix)
 - [Outputs](#outputs)
   - [`build`](#build-1)
   - [`manifest`](#manifest-1)
+  - [`tag`](#tag)
+  - [`tag-build`](#tag-build)
 - [Related](#related)
 - [Contribute](#contribute)
 
@@ -52,7 +55,7 @@ jobs:
           ref: ${{ github.head_ref || github.ref }}
       - id: version
         name: Extract version metadata
-        uses: flex-development/manver-action@1.0.0
+        uses: flex-development/manver-action@1.1.0
 ```
 
 ## Inputs
@@ -61,33 +64,39 @@ jobs:
 
 > **default**: `${{ github.head_ref || github.ref_name }}`
 
-The name of the branch to check when generating a build version.
+The name of the branch to check when generating a build version (optional).
 
 ### `build`
 
 > **default**: `${{ github.event.pull_request.head.sha || github.sha }}`
 
-Build metadata.
+Build metadata (optional).
 
 ### `manifest`
 
 > **default**: `package.json`
 
-The path to the manifest file.\
+The path to the manifest file (optional).
+
 Manifest files are expected to be compatible with [`jq`][jq].
 
 ### `property`
 
 > **default**: `.version`
 
-Version property path in [`manifest`](#manifest) file.
+Version property path in [`manifest`](#manifest) file (optional).
 
 ### `release-branch-prefix`
 
 > **default**: `release/`
 
-The prefix used to mark release branches.\
+The prefix used to mark release branches (optional).
+
 Build versions generated from release branches will not have [metadata](#build) attached.
+
+### `tag-prefix`
+
+The prefix to prepend when generating release tags (optional).
 
 ## Outputs
 
@@ -98,6 +107,14 @@ Build version (generated from [`outputs.manifest`](#manifest-1) and [`inputs.bui
 ### `manifest`
 
 The value of [`property`](#property) in the [`manifest`](#manifest) file.
+
+### `tag`
+
+Release tag generated from [`manifest`](#manifest-1) version.
+
+### `tag-build`
+
+Release tag generated from [`build`](#build-1) version.
 
 ## Related
 

@@ -28,6 +28,9 @@ inputs:
       the prefix used to mark release branches.
       build versions generated from release branches will not have metadata attached
     required: false
+  tag-prefix:
+    description: the prefix to prepend when generating release tags
+    required: false
 outputs:
   build:
     description: build version (generated from `outputs.manifest` and `inputs.build`)
@@ -35,6 +38,12 @@ outputs:
   manifest:
     description: version extracted from manifest
     value: ${{ steps.manifest.outputs.result }}
+  tag:
+    description: release tag generated from manifest version
+    value: ${{ steps.tag.outputs.manifest }}
+  tag-build:
+    description: release tag generated from build version
+    value: ${{ steps.tag.outputs.build }}
 runs:
   using: composite
   steps:
@@ -60,6 +69,19 @@ runs:
 
         # set output.
         echo "result=$version" >>$GITHUB_OUTPUT
+    - id: tag
+      name: Get release tag
+      shell: bash
+      run: |
+        set -e
+
+        # capture release tags.
+        build=$(echo "${{ inputs.tag-prefix }}${{ steps.build.outputs.result }}" | xargs)
+        manifest=$(echo "${{ inputs.tag-prefix }}${{ steps.manifest.outputs.result }}" | xargs)
+
+        # set outputs.
+        echo "build=$build" >>$GITHUB_OUTPUT
+        echo "manifest=$manifest" >>$GITHUB_OUTPUT
 branding:
   color: blue
   icon: tag
