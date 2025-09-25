@@ -17,7 +17,7 @@ const config: UserConfig = {
   rules: {
     'scope-enum': [RuleConfigSeverity.Error, 'always', scopes([
       'chore',
-      'profile'
+      'metadata'
     ])]
   }
 }

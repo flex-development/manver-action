@@ -48,7 +48,18 @@ runs:
       name: Get build version
       shell: bash
       run: |
-        echo "result=${{ startsWith(inputs.branch, inputs.release-branch-prefix) && steps.manifest.outputs.result || format('{0}+{1}', steps.manifest.outputs.result, inputs.build) }}" >>$GITHUB_OUTPUT
+        # init build version.
+        version=
+
+        # get build version.
+        if [[ ${{ startsWith(inputs.branch, inputs.release-branch-prefix) }} == true ]]; then
+          version=${{ steps.manifest.outputs.result }}
+        else
+          version=${{ format('{0}+{1}', steps.manifest.outputs.result, inputs.build) }}
+        fi
+
+        # set output.
+        echo "result=$version" >>$GITHUB_OUTPUT
 branding:
   color: blue
   icon: tag
