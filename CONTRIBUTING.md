@@ -314,7 +314,7 @@ e.g:
 
 ## Deployment
 
-> Note: Package and release publication is executed via GitHub workflow.\
+> Note: Deployments are executed via GitHub workflow.\
 > This is so invalid or malicious versions cannot be published without merging those changes into `main` first.
 
 1. Get a version bump recommendation
